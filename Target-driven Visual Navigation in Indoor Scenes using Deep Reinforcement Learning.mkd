@@ -1,0 +1,32 @@
+###Target_drivern Visual Navigation in Indoor Scenes using Deep Reinforcement Learning
+####Abstract 
+Two less addressed issues of deep reinforcement learning are (1) lack of generalization capability to new target goals , and 2)data inefficiency i.e., the model requires several (and often costly) episodes of trial and error to converge, which makes it impractical to be applied to real-world scenarios. In this paper, we address these two issues and apply our model to the task of target-driven visual navigation. To address the first issue, we propose an actor-critic model whose policy  is a function of the goal as well as the current  state, which allows to better generalize. To address the second issue, we propose AI2-THOR framework, which provides an environment with high-quality 3D scenes and physics engine. Our framework enables agents to take actions and interact with objects. Hence, wecan dollect ahuge number of training samples efficiently.
+####1. Introduction 
+In order to achieve higher adaptability and flexibility, we introduce a target-driven model. Our model takes the visual task objective as an input, hence we can avoid  retraining for every new target goal. Our model learns a policy that jointly embeds the target goal and the current state.
+
+Essentially, anagent learns to take its  next action conditoned on both its current state and target, tather than its current state only.A key intuition that we rely on is that different training episodes share information.  
+
+In this work , we show that a model that is trained in simulation can be generalized to real-world scenarios.
+#### 2.AI-ThOR FRAMEWORK
+For this purpose, we propose The Housr Of inteRactions (AI2-THOR) framework, which is designed by integrating a physics engine with a deep learning framework(Tensorflow).
+####3.Target-driven navigation model
+The modek learns a mapping from the 2D image to an action in the 3D space.
+Vision-based robot navigation requires a mapping from sensor signals to motion commands.
+
+Formally, the learning  objective of a target-driven model is to learn a stochastic policy function pi which takes two inputs, arepresentation of vurrent state st and a representation of target g and produces a probability distribution over the action space $\pi(s_t,g)$. For testing, a mobile robot keeps taking actions drawn from the policy distribution until reaching the destination. This way, actions are conditioned on both states and targets.
+1) Action space: 
+For our visual navigation tasks, weconsider four actions: moving forward,moving backward, turning left,and turning right.We use a constant step length and turning angle. This essentially disvretizes the scene space into a grid-world representation. To model uncertainty in real-world system dynamics, we add a Gaussian noise to steps N(0.0.01) and turns N(0,1.0) at each location.
+2) Observations and Goals:
+Both observations and goals are images taken by the agent's RGB camera in its firstpersion view. The benefit of using images as goal descriptions is the flexibility for specifying new targets.
+3) Reward design :
+We focus on minimizing the trajectory length to the nacigation targets Other factors such as energy efficiency could be considered instead. Therefore, we only provide a goal-reavhing reward (10.0) upon task completion. To encourage shorter trajectories, we add a small time penalty(-0.01) as immediate reward.
+####4.Model
+We focus on learning the target-driven policy function $\pi$ via deep reforment learning. We design a new deep neural network as a non-linear function approximator for $\pi$,where action a at time t can be drawn by:
+$$
+a~\pi ~(s_t,g|u)
+$$
+where u are the model parameters, $s_t$ is hte image of the current observation, and g is the image of the navigation target.![/home/kou/documents/picture/deepSiameseModel.png].
+
+Overall, the inputs to the network are two images that represent the agent's current observation and the target. Our approach to reasoning about the spatial arrangement between the current location and the target is to project them into the same embedding space, where their geometric relations are preserved. Deep simaese networks are a type of two-stream neural network models for discriminativr embedding learning.
+
+We use two steeams of weight-shared siamenlayerss to transform the current state and the target into the same embedding space.
