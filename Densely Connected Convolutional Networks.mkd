@@ -1,0 +1,16 @@
+#Densely Connected Convolutional Networks
+###Abstract
+In this paper,we embrace this observation and introduce the Dense Convolutional Network(Densework), which connects connects each layer to every other layer in a feed-forward fashion.Whereas traditional convolutional networksk woth L layers have L connections -- one between each other and its subsequent layer -- our network has L(L+1)/2 direct connections. For each layer, the feature-maps of all preceding layers are used as inputs, and its own features os all preceding layers are used as inputs into all subsequent lauers. DenseNets have several compelling advantages: they alleviate the vanishing-gradient problem, strengthen feature propagation, encourage feature reuse,and substantially reduce the number of parameters.
+### 1.Introduction
+Stochastic depth[13] shorten ResNets by randomly dropping layers during training to allow better information and gradient flow. FractalNets[17] repeatedly combine several parallel lauer sequences with different numner of convolution blocks to obtain a large nominal depth, whilde maintaining manu short paths in the network.
+
+To preserve the feed-forward nature, each layer obtains additional inputs from all preceding lauers and passed pn its own feature-maps to all susequent layers.
+
+Crutially, in conrrast to ResNets, wej never combine features through summation before theru are passed into a layer. Instead, we combine features bu concatenating them.Hence , the lth layer has l inputs, consisting of the feature-maos of all preceding convolutional blocks. It's own feature-maps are passed on to all L-l subsequent layers.
+
+A possibly counter-intuitice effect of theis dense connectivity pattern is that it requires fewer parameters than tranditional convolutional networks , as there is no need to relearn redundant feature maps.DenseNet layers are very narrow (e.g., 12 feature-maps per layer), adding only a small set of feature-maps to the "collective knowledge" of the network and keeo the remaining feature-maps unchanged -- and the dinal classifier makes a decision based on all feature-maps in the network.
+
+Besides better parameter efficiency, one big advantage of DenseNets is their improved flow of information and fradients throughout thennetwork, which makes them wasy to train. Each alyer has direct access to the gradients from the loss function and the original input  signal, leading to an implicit deep supervision[20].This helps training of deeper networks architectures. Further, we also observse that dense connections have a regularizing effect, which reduces overfitting on tasks  with smaller training set sizes.
+### 2.Related Work
+Instead of drawing  representational power from exteremely deep or wide architectures, DensNets exploit the potential of the network through feature reuse, yielding condensed models that are easy to train and highlyparameter-efficient.
+###3. DenseNets
