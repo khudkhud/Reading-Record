@@ -1,2 +1,9 @@
 # Reading-Record
-####1.new paper
+#### 1. Active Object Localization with Deep Reinforcement Learning
+>#### Abstract
+>We present an active detection model for localizing objects in scenes. The model is class-specific and allows an agent to focus attention on candidate regions for identifying the correct location of a target object. This agent learns to deform a bounding box using simple transformation actions, with the goal of determining the most specific location of target objects following top-down reasoning. The proposed localization agent is trained using deep reinforcement learning, and evaluated on the Pascal VOC2007 dataset.
+> ##### 1. Introduction
+>In this work, we propose a class-specific active detection model that learns to localize target objects known by the system. The proposed model follows a top-down search strategy, which starts by analyzing the whole scene and then proceeds to narrow down the correct location of objects. This is achieved by applying a sequence of transformations to a box that initially covers a large region of the image and is finally reduced to tight bounding box. The sequence of transformations is decided by an agent that analyzes the content of the currently visible region to select the next best action. Each transformation should keep the object inside the visible region while cutting off as much background as possible.
+>We propose a dynamic attention-action strategy that requires to pay attention to the contents of the current region, and to transform the box in such a way that the target object is progressively more focused.
+> ##### 2.Previous Works
+> ##### 3.Object Localization as Dynamic Decision Process
