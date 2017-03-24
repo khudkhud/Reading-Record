@@ -7,3 +7,7 @@
 >We propose a dynamic attention-action strategy that requires to pay attention to the contents of the current region, and to transform the box in such a way that the target object is progressively more focused.
 > ##### 2.Previous Works
 > ##### 3.Object Localization as Dynamic Decision Process
+
+#### 2.Simple Online and realtime tracking
+>#### Abstract
+>This paper explores a pragmatic approach to multiple object tracking where the main focus is to associate objects efficiently for online and realtime applications.Despite only using a rudimentary combination of familiar techniques such as the **Kalman Filter** and **Hungarian algorithm** for the tracking components, this approach achieves an accuracy comparable to state-of-the-art online trackers. Furthermore, due to the simplicity of our tracking method, the tracker updates at a rate of **260 Hz** which is over 20x faster than other state-of-the-art trackers.
