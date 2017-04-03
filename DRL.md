@@ -36,3 +36,6 @@ GitHub：https://github.com/openai/imitation
 采用A3C架构，通过增加附加任务来加速训练速度，提高学习精度。
 
 ![算法示意图](pic/DRL/unreal_1.png)
+
+#### 4.Deep Reinforcement learning : an overview
+#### 5.Target-drivern Visual Navigation in Indoor Scenes using Deep Reinforcement Learning
